@@ -21,8 +21,12 @@ class TodoRepositoryImpl implements TodoRepository {
 
   @override
   Future<void> createTodo(Todo todo) async {
-    final _todo = TodoModel.fromEntity(todo);
-    await localeDatasource.updateData(_todo);
+    try {
+      final _todo = TodoModel.fromEntity(todo);
+      await localeDatasource.updateData(_todo);
+    } catch (e) {
+      log("Create Todo failed. Reason: $e");
+    }
   }
 
   @override
