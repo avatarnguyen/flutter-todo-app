@@ -1,6 +1,5 @@
 import 'package:flutter_todo_app/core/core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:injectable/injectable.dart';
 
 abstract class LocalDatasource {
   Future<List<TodoModel>> getAllData();
@@ -8,9 +7,8 @@ abstract class LocalDatasource {
   Future<void> createMultipleData(List<TodoModel> todos);
 }
 
-@LazySingleton(as: LocalDatasource)
 class HiveLocalDatasource implements LocalDatasource {
-  final Box<String> todoHiveBox;
+  final Box<TodoModel> todoHiveBox;
 
   HiveLocalDatasource(this.todoHiveBox);
 
@@ -20,7 +18,7 @@ class HiveLocalDatasource implements LocalDatasource {
     for (int i = 0; i < todoHiveBox.length; i++) {
       final _todo = todoHiveBox.getAt(i);
       if (_todo != null) {
-        _todos.add(TodoModel.fromJson(_todo));
+        _todos.add(_todo);
       }
     }
     return _todos;
@@ -28,7 +26,7 @@ class HiveLocalDatasource implements LocalDatasource {
 
   @override
   Future<void> updateData(TodoModel todo) async {
-    return await todoHiveBox.put(todo.id, todo.toJson());
+    return await todoHiveBox.put(todo.id, todo);
   }
 
   @override
@@ -37,7 +35,7 @@ class HiveLocalDatasource implements LocalDatasource {
       todos.map(
         (_todo) async => await todoHiveBox.put(
           _todo.id,
-          _todo.toJson(),
+          _todo,
         ),
       ),
     );
