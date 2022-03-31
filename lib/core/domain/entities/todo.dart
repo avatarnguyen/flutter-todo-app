@@ -6,11 +6,13 @@ class Todo extends Equatable {
   final int userId;
   final String? title;
   final bool completed;
+  final DateTime? created;
 
   const Todo({
     required this.id,
     required this.userId,
     this.title,
+    this.created,
     required this.completed,
   });
 
@@ -19,6 +21,7 @@ class Todo extends Equatable {
         id,
         userId,
         title,
+        created,
         completed,
       ];
 
@@ -27,12 +30,14 @@ class Todo extends Equatable {
     int? userId,
     String? title,
     bool? completed,
+    DateTime? created,
   }) {
     return Todo(
       id: id ?? this.id,
       userId: userId ?? this.userId,
       title: title ?? this.title,
       completed: completed ?? this.completed,
+      created: created ?? this.created,
     );
   }
 }

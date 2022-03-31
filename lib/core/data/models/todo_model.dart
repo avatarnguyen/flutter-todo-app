@@ -16,11 +16,14 @@ class TodoModel extends HiveObject {
   final String? title;
   @HiveField(3)
   final bool completed;
+  @HiveField(4)
+  final DateTime? created;
 
   TodoModel({
     required this.id,
     required this.userId,
     this.title,
+    this.created,
     required this.completed,
   });
 
@@ -29,6 +32,7 @@ class TodoModel extends HiveObject {
       'id': id,
       'userId': userId,
       'title': title,
+      'created': created,
       'completed': completed,
     };
   }
@@ -37,6 +41,7 @@ class TodoModel extends HiveObject {
         id: id,
         userId: userId,
         title: title,
+        created: created,
         completed: completed,
       );
 
@@ -45,6 +50,7 @@ class TodoModel extends HiveObject {
         userId: todo.userId,
         title: todo.title,
         completed: todo.completed,
+        created: todo.created,
       );
 
   factory TodoModel.fromMap(Map<String, dynamic> map) {
@@ -53,6 +59,8 @@ class TodoModel extends HiveObject {
       userId: map['userId'] as int,
       title: map['title'] != null ? map['title'] as String : null,
       completed: map['completed'] != null ? map['completed'] as bool : false,
+      created:
+          map['created'] != null ? map['created'] as DateTime : DateTime.now(),
     );
   }
 
