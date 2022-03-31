@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app/core/data/models/todo_model.dart';
+import 'package:flutter_todo_app/features/todo_list/presentation/pages/todo_list_page.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'injectable.dart';
 
-void main() {
+Future<void> main() async {
+  print('Main Init');
+  await Hive.initFlutter();
+  Hive.registerAdapter(TodoModelAdapter());
+
   configureDependencies();
   runApp(const MyApp());
 }
@@ -13,57 +20,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Todo App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        primaryColor: Colors.blue.shade800,
+        backgroundColor: Colors.grey.shade200,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      home: const TodoListPage(),
     );
   }
 }

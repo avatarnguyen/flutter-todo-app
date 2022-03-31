@@ -5,8 +5,9 @@ import 'package:http/http.dart' as http;
 
 @module
 abstract class RegisterModule {
-  @lazySingleton
-  http.Client httpClient() => http.Client();
   @preResolve
   Future<Box<String>> get todoBox => Hive.openBox(kLocalStorageName);
+
+  @singleton
+  http.Client get httpClient => http.Client();
 }

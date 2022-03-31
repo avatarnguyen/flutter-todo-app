@@ -1,4 +1,6 @@
 part of 'todolist_bloc.dart';
 
-@immutable
-abstract class TodolistEvent {}
+@freezed
+class TodolistEvent with _$TodolistEvent {
+  const factory TodolistEvent.fetchTodos() = _FetchTodo;
+}

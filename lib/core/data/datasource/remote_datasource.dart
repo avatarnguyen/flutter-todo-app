@@ -8,7 +8,7 @@ abstract class RemoteDatasource {
   Future<dynamic> getData();
 }
 
-@Singleton(as: RemoteDatasource)
+@LazySingleton(as: RemoteDatasource)
 class HttpRemoteDatasource implements RemoteDatasource {
   final http.Client client;
 
