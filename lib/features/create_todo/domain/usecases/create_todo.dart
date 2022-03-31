@@ -1,8 +1,6 @@
 import 'package:flutter_todo_app/core/domain/entities/todo.dart';
 import 'package:flutter_todo_app/core/domain/repositories/todo_repository.dart';
-import 'package:injectable/injectable.dart';
 
-@lazySingleton
 class CreateTodo {
   final TodoRepository repository;
 

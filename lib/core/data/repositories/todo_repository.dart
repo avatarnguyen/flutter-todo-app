@@ -7,9 +7,7 @@ import 'package:flutter_todo_app/core/data/datasource/remote_datasource.dart';
 import 'package:flutter_todo_app/core/data/models/todo_model.dart';
 import 'package:flutter_todo_app/core/domain/entities/todo.dart';
 import 'package:flutter_todo_app/core/domain/repositories/todo_repository.dart';
-import 'package:injectable/injectable.dart';
 
-@Singleton(as: TodoRepository)
 class TodoRepositoryImpl implements TodoRepository {
   final RemoteDatasource remoteDatasource;
   final LocalDatasource localeDatasource;
@@ -33,7 +31,9 @@ class TodoRepositoryImpl implements TodoRepository {
   Future<List<Todo>> getTodos() async {
     try {
       final _localTodos = await localeDatasource.getAllData();
+      log('Local Todos: ${_localTodos.length}');
       if (_localTodos.isEmpty) {
+        log('Fetch From Endpoint');
         final _remoteResponse = await remoteDatasource.getData();
         debugPrint('Raw Data: $_remoteResponse ');
         final _remoteDecoded = json.decode(_remoteResponse);
@@ -53,6 +53,7 @@ class TodoRepositoryImpl implements TodoRepository {
           return [];
         }
       } else {
+        log('Return From Local');
         return _localTodos.map((_todo) => _todo.toEntity()).toList();
       }
     } catch (e) {
