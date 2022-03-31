@@ -46,7 +46,7 @@ class TodolistBloc extends Bloc<TodolistEvent, TodolistState> {
           )
           .toList();
       _unCompletedTodos
-          .sort((a, b) => (a.created ?? _now).compareTo(b.created ?? _now));
+          .sort((a, b) => (b.created ?? _now).compareTo(a.created ?? _now));
       final _completedTodos = _todos
           .where(
             (element) => element.completed == true,
