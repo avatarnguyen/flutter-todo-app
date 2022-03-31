@@ -21,6 +21,12 @@ class _$TodolistEventTearOff {
   _FetchTodo fetchTodos() {
     return const _FetchTodo();
   }
+
+  _UpdateTodo updateTodo({required Todo todo}) {
+    return _UpdateTodo(
+      todo: todo,
+    );
+  }
 }
 
 /// @nodoc
@@ -31,32 +37,38 @@ mixin _$TodolistEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchTodos,
+    required TResult Function(Todo todo) updateTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetchTodos,
+    TResult Function(Todo todo)? updateTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchTodos,
+    TResult Function(Todo todo)? updateTodo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchTodo value) fetchTodos,
+    required TResult Function(_UpdateTodo value) updateTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchTodo value)? fetchTodos,
+    TResult Function(_UpdateTodo value)? updateTodo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchTodo value)? fetchTodos,
+    TResult Function(_UpdateTodo value)? updateTodo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +131,7 @@ class _$_FetchTodo implements _FetchTodo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchTodos,
+    required TResult Function(Todo todo) updateTodo,
   }) {
     return fetchTodos();
   }
@@ -127,6 +140,7 @@ class _$_FetchTodo implements _FetchTodo {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetchTodos,
+    TResult Function(Todo todo)? updateTodo,
   }) {
     return fetchTodos?.call();
   }
@@ -135,6 +149,7 @@ class _$_FetchTodo implements _FetchTodo {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchTodos,
+    TResult Function(Todo todo)? updateTodo,
     required TResult orElse(),
   }) {
     if (fetchTodos != null) {
@@ -147,6 +162,7 @@ class _$_FetchTodo implements _FetchTodo {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchTodo value) fetchTodos,
+    required TResult Function(_UpdateTodo value) updateTodo,
   }) {
     return fetchTodos(this);
   }
@@ -155,6 +171,7 @@ class _$_FetchTodo implements _FetchTodo {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchTodo value)? fetchTodos,
+    TResult Function(_UpdateTodo value)? updateTodo,
   }) {
     return fetchTodos?.call(this);
   }
@@ -163,6 +180,7 @@ class _$_FetchTodo implements _FetchTodo {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchTodo value)? fetchTodos,
+    TResult Function(_UpdateTodo value)? updateTodo,
     required TResult orElse(),
   }) {
     if (fetchTodos != null) {
@@ -174,6 +192,139 @@ class _$_FetchTodo implements _FetchTodo {
 
 abstract class _FetchTodo implements TodolistEvent {
   const factory _FetchTodo() = _$_FetchTodo;
+}
+
+/// @nodoc
+abstract class _$UpdateTodoCopyWith<$Res> {
+  factory _$UpdateTodoCopyWith(
+          _UpdateTodo value, $Res Function(_UpdateTodo) then) =
+      __$UpdateTodoCopyWithImpl<$Res>;
+  $Res call({Todo todo});
+}
+
+/// @nodoc
+class __$UpdateTodoCopyWithImpl<$Res> extends _$TodolistEventCopyWithImpl<$Res>
+    implements _$UpdateTodoCopyWith<$Res> {
+  __$UpdateTodoCopyWithImpl(
+      _UpdateTodo _value, $Res Function(_UpdateTodo) _then)
+      : super(_value, (v) => _then(v as _UpdateTodo));
+
+  @override
+  _UpdateTodo get _value => super._value as _UpdateTodo;
+
+  @override
+  $Res call({
+    Object? todo = freezed,
+  }) {
+    return _then(_UpdateTodo(
+      todo: todo == freezed
+          ? _value.todo
+          : todo // ignore: cast_nullable_to_non_nullable
+              as Todo,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateTodo implements _UpdateTodo {
+  const _$_UpdateTodo({required this.todo});
+
+  @override
+  final Todo todo;
+
+  @override
+  String toString() {
+    return 'TodolistEvent.updateTodo(todo: $todo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UpdateTodo &&
+            const DeepCollectionEquality().equals(other.todo, todo));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(todo));
+
+  @JsonKey(ignore: true)
+  @override
+  _$UpdateTodoCopyWith<_UpdateTodo> get copyWith =>
+      __$UpdateTodoCopyWithImpl<_UpdateTodo>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchTodos,
+    required TResult Function(Todo todo) updateTodo,
+  }) {
+    return updateTodo(todo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? fetchTodos,
+    TResult Function(Todo todo)? updateTodo,
+  }) {
+    return updateTodo?.call(todo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchTodos,
+    TResult Function(Todo todo)? updateTodo,
+    required TResult orElse(),
+  }) {
+    if (updateTodo != null) {
+      return updateTodo(todo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchTodo value) fetchTodos,
+    required TResult Function(_UpdateTodo value) updateTodo,
+  }) {
+    return updateTodo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_FetchTodo value)? fetchTodos,
+    TResult Function(_UpdateTodo value)? updateTodo,
+  }) {
+    return updateTodo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchTodo value)? fetchTodos,
+    TResult Function(_UpdateTodo value)? updateTodo,
+    required TResult orElse(),
+  }) {
+    if (updateTodo != null) {
+      return updateTodo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateTodo implements TodolistEvent {
+  const factory _UpdateTodo({required Todo todo}) = _$_UpdateTodo;
+
+  Todo get todo;
+  @JsonKey(ignore: true)
+  _$UpdateTodoCopyWith<_UpdateTodo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
