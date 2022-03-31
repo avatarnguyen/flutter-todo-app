@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app/core/data/models/todo_model.dart';
 import 'package:flutter_todo_app/features/todo_list/presentation/pages/todo_list_page.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'injectable.dart';
+import 'package:flutter_todo_app/injectable.dart' as di;
 
 Future<void> main() async {
-  print('Main Init');
-  await Hive.initFlutter();
-  Hive.registerAdapter(TodoModelAdapter());
+  // WidgetsFlutterBinding.ensureInitialized();
 
-  configureDependencies();
+  await di.InitService.setup();
   runApp(const MyApp());
 }
 
