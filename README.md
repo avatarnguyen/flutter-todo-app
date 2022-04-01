@@ -1,16 +1,15 @@
 # flutter_todo_app
 
-A new Flutter project.
+Simple Awesome Todo App from Anh
 
-## Getting Started
+## Comments
 
-This project is a starting point for a Flutter application.
+Dieses Todo App ist nach Clean Architecture konzipiert.
+Mit Hilfe von Bloc Architecture für die Reaktivität des UIs und get_it als Service locator für die Business Logic im Hintergrund.
 
-A few resources to get you started if this is your first Flutter project:
+Die Anforderung der App ist minimal und eigentlich ist clean architecture oder bloc state management nicht notwendig. Ich könnte diese App auch mit pur inherited widget und change notifier bauen.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Aber da ich Software Architect bin und hiermit auch meine Wissen showcasen kann,
+habe ich daher bei diesen App voll ausgegeek und die Prinzipien von Clean Architecture angewendet, als auch das Bloc State Management.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Außerdem bei markieren des Todos als 'erledigt' habe ich eine kleine Animation eingebaut, was die Bedienung der App mehr Spaß macht.
